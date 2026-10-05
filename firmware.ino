@@ -1,16 +1,16 @@
 #include <AccelStepper.h>
 #include <Servo.h>
 
-// --- Pin Definitions ---
-const int m1Pins[4] = {8, 10, 9, 11};   // Motor 1 (Y Axis)
-const int m2Pins[4] = {A0, A2, A1, A3}; // Motor 2 (X Axis)
+//pin Definitions
+const int m1Pins[4] = {8, 10, 9, 11};   // motor 1 (YAxis)
+const int m2Pins[4] = {A0, A2, A1, A3}; // motor 2 (XAxis)
 const int servoPin = 3;
 
 AccelStepper motor1(8, m1Pins[0], m1Pins[1], m1Pins[2], m1Pins[3]);
 AccelStepper motor2(8, m2Pins[0], m2Pins[1], m2Pins[2], m2Pins[3]);
 Servo penServo;
 
-// --- Calibration ---
+//---Calibration
 float stepsPerMmX = 500.0; 
 float stepsPerMmY = 4.2;   
 
@@ -92,9 +92,9 @@ void loop() {
         long max_steps = max(dx, dy);
 
         if (max_steps > 0) {
-          // --- SPEED CONTROLS REDUCED HERE ---
-          float MAX_VECTOR_SPEED = 400.0; // Was 1000.0
-          float MAX_VECTOR_ACCEL = 100.0; // Was 300.0
+          //SPEED CONTROLS REDUCED HERe
+          float MAX_VECTOR_SPEED = 400.0;
+          float MAX_VECTOR_ACCEL = 100.0;
           
           float ratioX = (float)dx / max_steps;
           float ratioY = (float)dy / max_steps;
